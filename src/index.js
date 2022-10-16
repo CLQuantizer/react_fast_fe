@@ -52,7 +52,13 @@ function Index() {
     }
   };
   const getUser = ()=>{
-    return user.toString();
+    if(user){
+      return user.toString();
+    }
+    else{
+      return "there";
+    }
+
   }
   useEffect(() => {
     if (accessToken !== '') {
