@@ -3,7 +3,7 @@ import {
   Box, Text, VStack, Grid, ListItem, UnorderedList,
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
-import Config from './Config';
+import Config from '../Config';
 
 const journalUrl = Config.api + 'users/read/alljournals/';
 

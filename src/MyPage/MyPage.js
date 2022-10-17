@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Button, Center, Grid, Input, Text, VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
-import Config from './Config';
+import Config from '../Config';
 import MyTimer from './Timer';
-import Journal from './Journal';
+import MyJournals from './MyJournals';
 import JournalForm from './JournalForm';
 
 const tokenApi = Config.api + 'users/token/';
@@ -34,7 +34,7 @@ function MyPage(props) {
           </Box>
           <Text fontSize='2xl' fontWeight='bold'>Here is a list of your Journals</Text>
         </VStack>
-        <Journal accessToken={props.accessToken} />
+        <MyJournals accessToken={props.accessToken} />
       </Grid>
     </Box>);
   } else {

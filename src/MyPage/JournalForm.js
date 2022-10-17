@@ -6,7 +6,7 @@ import {
   Center,
   Button,
 } from '@chakra-ui/react';
-import Config from './Config';
+import Config from '../Config';
 import { AutoResizeTextarea } from './AutoResizeTextArea';
 
 const journalUrl = Config.api + 'users/write/journals/';

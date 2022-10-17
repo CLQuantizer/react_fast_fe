@@ -11,10 +11,10 @@ import React, { StrictMode, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import App from './App';
-import MyPage from './MyPage';
+import App from './Word2VecForm/App';
+import MyPage from './MyPage/MyPage';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import Journals from './Journals';
+import Journals from './JournalsPage/Journals';
 import Config from './Config';
 
 const serverUrl = Config.server;

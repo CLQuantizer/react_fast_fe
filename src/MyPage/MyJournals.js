@@ -8,13 +8,13 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
-import Config from './Config';
+import Config from '../Config';
 
 const meUrl = Config.api+'users/read/me/';
 const myJournalsUrl = Config.api+'users/read/journals/';
 
 // use props here to pass in the access token
-function Journal(props){
+function MyJournals(props){
   const [MyJournals,setMyJournals] = useState([]);
 
   async function getNameAndThenJournals(){
@@ -56,4 +56,4 @@ function Journal(props){
   );
 }
 
-export default Journal;
+export default MyJournals;

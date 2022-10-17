@@ -9,7 +9,7 @@ import {
   Grid,
 } from '@chakra-ui/react';
 import { Logo } from './Logo';
-import Config from './Config';
+import Config from '../Config';
 
 // devlopment api
 const relatedUrl = Config.glove + 'related/';
