@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import App from './Word2VecForm/App';
 import MyPage from './MyPage/MyPage';
+import DataPanel from './DataPanel/DataPanel';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Journals from './JournalsPage/Journals';
 import Config from './Config';
@@ -23,7 +24,7 @@ function Index() {
   const [accessToken, setAccessToken] = useState(localStorage.getItem('accessToken'));
   const [expiration, setExpiration] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('accessToken') !== null);
-  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [user, setUser] = useState(localStorage.getItem('user'));
 
   const readToken = async (isLoggedIn) => {
     if (isLoggedIn) {
@@ -37,29 +38,28 @@ function Index() {
         setAccessToken(localStorage.getItem('accessToken'));
         setExpiration(parseInt(localStorage.getItem('expiration')));
         setIsLoggedIn(true);
-        setUser(localStorage.getItem("user"));
+        setUser(localStorage.getItem('user'));
       } else {
         setAccessToken('');
         setExpiration(0);
         setIsLoggedIn(false);
-        setUser("there");
+        setUser('there');
       }
     } else {
       setAccessToken('');
       setExpiration(0);
       setIsLoggedIn(false);
-      setUser("there");
+      setUser('there');
     }
   };
-  const getUser = ()=>{
-    if(user){
+  const getUser = () => {
+    if (user) {
       return user.toString();
-    }
-    else{
-      return "there";
+    } else {
+      return 'there';
     }
 
-  }
+  };
   useEffect(() => {
     if (accessToken !== '') {
       readToken(isLoggedIn).then(() => {
@@ -92,7 +92,7 @@ function Index() {
             <GridItem w='100%' h='10'>
               <Button variant='outline'>
                 {/* <Link href ={serverUrl+'login/'}>{isLoggedIn===true ? 'Login':'logout' }</Link> */}
-                <Link href={serverUrl + 'login/'}>{isLoggedIn ? 'Hi '+getUser(): 'login'}</Link>
+                <Link href={serverUrl + 'login/'}>{isLoggedIn ? 'Hi ' + getUser() : 'login'}</Link>
               </Button>
             </GridItem>
 
@@ -103,6 +103,7 @@ function Index() {
           <Routes>
             <Route path='' element={<App />} />
             <Route path='journals/' element={<Journals />} />
+            <Route path='dataPanel' element={<DataPanel />}></Route>
             <Route path='login/' element={<MyPage
               accessToken={accessToken}
               isLoggedIn={isLoggedIn}
