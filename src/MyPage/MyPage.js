@@ -61,7 +61,7 @@ function MyPage(props) {
             })
               .then(response => {
                 if (response.ok) {
-                  console.log('Get toekn response OK');
+                  console.log('Get token response OK');
                   return response.json();
                 }
               })

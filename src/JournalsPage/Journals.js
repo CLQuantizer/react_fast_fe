@@ -15,7 +15,7 @@ function Journals() {
       <Text fontSize='2xl' fontWeight='bold'>{j['title']}</Text>
       <Text fontSize='m' fontWeight='bold' color='#285E61'>By {j['author']} on: {j['date']}</Text>
       <ReactMarkdown>{j['body']}</ReactMarkdown>
-    </ListItem>
+    </ListItem>,
   );
   // const [ListOfJournals, setListOfJournal] = useState([]);
   // setListOfJournal(getData);
@@ -23,17 +23,15 @@ function Journals() {
     fetch(journalUrl, { method: 'GET' })
       .then(response => {
         if (response.ok) {
-          console.log('the response for from API is:');
-          console.log(response.body);
           return response.json();
         }
         throw response;
       })
-      .then(data=>{
+      .then(data => {
         setListOfJournals(data);
       })
-      .catch(error=>{
-        console.log("error: "+error);
+      .catch(error => {
+        console.log('error: ' + error);
       });
   }, []);
 
