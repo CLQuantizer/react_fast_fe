@@ -6,6 +6,7 @@ import PythonLogo from './Python.svg';
 import UbuntuLogo from './Ubuntu.svg';
 import ReactLogo from './React.svg';
 import ServiceTable from './ServiceTable';
+import Config from '../Config';
 import { Logo } from './Logo';
 
 function DataPanel() {
@@ -20,7 +21,7 @@ function DataPanel() {
             <Logo logo={PythonLogo}/>
             <ServiceTable name='uvicorn' />
             <Logo logo={ReactLogo}/>
-            <ServiceTable name='npm' />
+            <ServiceTable name={Config.frontEndKeyWord} />
             <Logo logo={RedisLogo}/>
             <RedisTable />
           </VStack>
