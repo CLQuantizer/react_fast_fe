@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
 import { useTable, useSortBy } from 'react-table';
 import Config from '../Config';
+import { Logo } from './Logo';
 
 const serviceUrl = Config.dataPanel + 'services/';
 
@@ -46,36 +47,40 @@ function ServiceTable(props) {
     useTable({ columns, data }, useSortBy);
 
   return (
-    <Table variant='striped' size='sm' {...getTableProps()}>
-      <Thead>
-        {headerGroups.map((headerGroup) => (
-          <Tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <Th
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-                isNumeric={column.isNumeric}
-              >
-                {column.render('Header')}
-              </Th>
-            ))}
-          </Tr>
-        ))}
-      </Thead>
-      <Tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <Tr {...row.getRowProps()}>
-              {row.cells.map((cell) => (
-                <Td color='#696969' {...cell.getCellProps()} isNumeric={cell.column.isNumeric}>
-                  {cell.render('Cell')}
-                </Td>
+    <>
+      <Logo logo={props.logo} />
+      <Table variant='striped' size='sm' {...getTableProps()}>
+        <Thead>
+          {headerGroups.map((headerGroup) => (
+            <Tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <Th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  isNumeric={column.isNumeric}
+                >
+                  {column.render('Header')}
+                </Th>
               ))}
             </Tr>
-          );
-        })}
-      </Tbody>
-    </Table>
+          ))}
+        </Thead>
+        <Tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <Tr {...row.getRowProps()}>
+                {row.cells.map((cell) => (
+                  <Td color='#696969' {...cell.getCellProps()} isNumeric={cell.column.isNumeric}>
+                    {cell.render('Cell')}
+                  </Td>
+                ))}
+              </Tr>
+            );
+          })}
+        </Tbody>
+      </Table>
+      <br />
+    </>
   );
 }
 
