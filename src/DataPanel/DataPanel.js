@@ -6,6 +6,7 @@ import UbuntuLogo from './Ubuntu.svg';
 import ReactLogo from './React.svg';
 import ServiceTable from './ServiceTable';
 import Config from '../Config';
+import { Logo } from './Logo';
 
 function DataPanel() {
 
@@ -13,10 +14,17 @@ function DataPanel() {
     <VStack spacing={8}>
       <Grid minH='100vh' p={0}>
         <VStack spacing={2}>
-          <ServiceTable logo={UbuntuLogo} name='redis' />
-          <ServiceTable logo={PythonLogo} name='uvicorn' />
-          <ServiceTable logo={ReactLogo} name={Config.frontEndKeyWord} />
           <RedisTable />
+          <Logo logo={PythonLogo} />
+          <ServiceTable name='uvicorn' />
+          <Logo logo={ReactLogo} />
+          <ServiceTable name={Config.frontEndKeyWord} />
+          <Logo logo={UbuntuLogo} />
+          <ServiceTable name='redis' />
+          <ServiceTable name='postgres' />
+          <br />
+          <br />
+          <br />
         </VStack>
       </Grid>
     </VStack>

@@ -90,9 +90,6 @@ function RedisTable() {
         </Tbody>
       </Table>
       <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 }
