@@ -24,7 +24,7 @@ function RedisTable() {
           return response.json();
         }
       }).then(data => {
-      console.log(data);
+      // console.log(data);
       setData(makeData(data.keys, data.ttls));
     });
   }, []);

@@ -23,7 +23,7 @@ function ServiceTable(props) {
           return response.json();
         }
       }).then(data => {
-      console.log(data);
+      // console.log(data);
       setData(makeData(data.name, data.services));
     });
   }, [props.name]);
