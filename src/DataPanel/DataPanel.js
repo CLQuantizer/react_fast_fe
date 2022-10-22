@@ -1,45 +1,34 @@
 import React from 'react';
-import { Box, Grid, GridItem, Text, VStack } from '@chakra-ui/react';
-import { RedisLogo } from './RedisLogo';
-import { UbuntuLogo } from './UbuntuLogo';
-import { PythonLogo } from './PythonLogo';
+import { Box, Grid, VStack } from '@chakra-ui/react';
 import RedisTable from './RedisTable';
+import RedisLogo from './redis.svg';
+import PythonLogo from './Python.svg';
+import UbuntuLogo from './Ubuntu.svg';
+import ReactLogo from './React.svg';
+import ServiceTable from './ServiceTable';
+import { Logo } from './Logo';
 
 function DataPanel() {
 
-  return (<Box fontSize='xl'>
-    <Grid minH='100vh' p={3}>
+  return (
+    <Box fontSize='xl'>
       <VStack spacing={8}>
-        <Grid templateColumns='repeat(2, 1)' gap={6}>
-          <GridItem w='100%' h='10'>
-            <UbuntuLogo pointerEvents='none' />
-          </GridItem>
-          <GridItem w='100%' h='10'>
-            <Text></Text>
-          </GridItem>
-        </Grid>
-
-        <Grid templateColumns='repeat(2, 1fr)' gap={6}>
-          <GridItem w='100%' h='10'>
-            <PythonLogo pointerEvents='none' />
-          </GridItem>
-          <GridItem w='100%' h='10'>
-            <Text></Text>
-          </GridItem>
-        </Grid>
-
-        <Grid templateColumns='repeat(2, 1)' gap={6}>
-          <GridItem w='100%' h='10'>
-            <RedisLogo pointerEvents='none' />
-          </GridItem>
-          <GridItem w='100%' h='10'>
+        <Grid minH='100vh' p={3}>
+          <VStack spacing={8}>
+            <Logo logo={UbuntuLogo}/>
+            <ServiceTable name='redis' />
+            <Logo logo={PythonLogo}/>
+            <ServiceTable name='uvicorn' />
+            <Logo logo={ReactLogo}/>
+            <ServiceTable name='npm' />
+            <Logo logo={RedisLogo}/>
             <RedisTable />
-          </GridItem>
+          </VStack>
         </Grid>
-
       </VStack>
-    </Grid>
-  </Box>);
+    </Box>
+  )
+    ;
 }
 
 export default DataPanel;

@@ -1,43 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Thead, Tbody, Tr, Th, Td, chakra } from '@chakra-ui/react';
-import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
 import { useTable, useSortBy } from 'react-table';
 import Config from '../Config';
 
-const rediskeyUrl = Config.dataPanel + 'rediskeys';
+const serviceUrl = Config.dataPanel + 'services/';
 
-const makeData = (keys, ttls) => {
+const makeData = (name, services) => {
   let results = [];
-  for (let i = 0; i < keys.length; i++) {
-    results.push({ key: keys[i], ttl: ttls[i] });
+  for (let i = 0; i < services.length; i++) {
+    results.push({ name: name + i.toString(), service: services[i] });
   }
   return results;
 };
 
-function RedisTable() {
+function ServiceTable(props) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(rediskeyUrl, { method: 'GET' })
+    fetch(serviceUrl + props.name, { method: 'GET' })
       .then(response => {
         if (response.ok) {
           return response.json();
         }
       }).then(data => {
       console.log(data);
-      setData(makeData(data.keys, data.ttls));
+      setData(makeData(data.name, data.services));
     });
-  }, []);
+  }, [props.name]);
 
   const columns = React.useMemo(
     () => [
       {
-        Header: 'keys',
-        accessor: 'key',
+        Header: 'name',
+        accessor: 'name',
       },
       {
-        Header: 'ttls',
-        accessor: 'ttl',
+        Header: 'services',
+        accessor: 'service',
       },
     ],
     [],
@@ -57,15 +56,6 @@ function RedisTable() {
                 isNumeric={column.isNumeric}
               >
                 {column.render('Header')}
-                <chakra.span pl='4'>
-                  {column.isSorted ? (
-                    column.isSortedDesc ? (
-                      <TriangleDownIcon aria-label='sorted descending' />
-                    ) : (
-                      <TriangleUpIcon aria-label='sorted ascending' />
-                    )
-                  ) : null}
-                </chakra.span>
               </Th>
             ))}
           </Tr>
@@ -77,7 +67,7 @@ function RedisTable() {
           return (
             <Tr {...row.getRowProps()}>
               {row.cells.map((cell) => (
-                <Td color='#696969' {...cell.getCellProps()} isNumeric={cell.column.isNumeric }>
+                <Td color='#696969' {...cell.getCellProps()} isNumeric={cell.column.isNumeric}>
                   {cell.render('Cell')}
                 </Td>
               ))}
@@ -89,4 +79,4 @@ function RedisTable() {
   );
 }
 
-export default RedisTable;
+export default ServiceTable;
