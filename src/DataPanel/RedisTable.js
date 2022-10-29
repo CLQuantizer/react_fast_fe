@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Thead, Tbody, Tr, Th, Td, chakra } from '@chakra-ui/react';
-import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
+import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react';
 import { useTable, useSortBy } from 'react-table';
 import Config from '../Config';
 import RedisLogo from './redis.svg';
@@ -16,6 +15,9 @@ const makeData = (data) => {
   for (let i = 0; i < len; i++) {
     results.push({ key: keys[i], ttl: ttls[i] });
   }
+  results.sort((a, b) => {
+    return a.ttl < b.ttl;
+  });
   return results;
 };
 
@@ -23,8 +25,8 @@ const updateData = (dataArray, x) => {
   let results = [];
   for (let i = 0; i < dataArray.length; i++) {
     let newTtl = dataArray[i].ttl - x;
-    if (newTtl<=0){
-      newTtl=0;
+    if (newTtl <= 0) {
+      newTtl = 0;
     }
     results.push({ key: dataArray[i].key, ttl: newTtl });
   }
@@ -73,10 +75,6 @@ function RedisTable() {
             isNumeric={column.isNumeric}
           >
             {column.render('Header')}
-            <chakra.span pl='4'>
-              {column.isSorted ? (column.isSortedDesc ? (<TriangleDownIcon aria-label='sorted descending' />) : (
-                <TriangleUpIcon aria-label='sorted ascending' />)) : null}
-            </chakra.span>
           </Th>))}
         </Tr>))}
       </Thead>
