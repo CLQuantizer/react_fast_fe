@@ -53,7 +53,7 @@ function DataTable({data}) {
           return (
             <Tr {...row.getRowProps()}>
               {row.cells.map((cell) => (
-                <Td {...cell.getCellProps()} isNumeric={cell.column.isNumeric}>
+                <Td color="#A0AEC0" {...cell.getCellProps()} isNumeric={cell.column.isNumeric}>
                   {cell.render('Cell')}
                 </Td>
               ))}

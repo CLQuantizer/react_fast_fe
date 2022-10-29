@@ -35,27 +35,23 @@ function App() {
 
   // function that does POST with target word
   // And set the data to the state
-  const getList = async (target) => {
-    try {
-      var url = relatedUrl + target;
-      const response = await fetch(url, { method: 'GET' });
-      const json = await response.json();
-      var results = makeData(json.words, json.probs);
-      setData(results);
-      console.log('the response for \'' + target + '\' from API is:');
-      console.log(results);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      console.log('generating the DataTable');
-    }
-  };
 
   // react hook
   useEffect(() => {
-    getList(target).then(() => {
-      console.log('the word has been set to: ' + target);
-    });
+    fetch(relatedUrl + target)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+      }).then(data => {
+      console.log(data);
+      let results = makeData(data.words, data.probs);
+      setData(results);
+      console.log('the response for [' + target + '] from API is:');
+    }).catch(error => {
+        console.error(error);
+      },
+    );
   }, [target]);
 
   // another component?
@@ -70,7 +66,8 @@ function App() {
     });
     return (
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor='word'>Enter a word to search for its 15 most related words<br /></label>
+        <label htmlFor='word'>Find the 15 neighbours<br />of a word in <u><a
+          href={'https://nlp.stanford.edu/projects/glove/'}>GloVe</a></u><br /></label>
         <br />
         <Input id='word'
                name='word'

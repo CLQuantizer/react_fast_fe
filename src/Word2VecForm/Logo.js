@@ -12,7 +12,7 @@ export const Logo = props => {
 
   const animation = prefersReducedMotion
     ? undefined
-    : `${spin} infinite 2s linear`;
+    : `${spin} infinite 5s linear`;
 
   return <a href="datapanel"><Image animation={animation} src={logo} {...props} /></a>;
 };
