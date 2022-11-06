@@ -12,6 +12,8 @@ function SubmitAlert(props) {
     } else if (props.submitted === "Success") {
         message = "you have successfully submitted a new journal";
         code = "success";
+    } else if (props.submitted === 0) {
+        return (<></>);
     } else {
         message = "unknown error";
         code = "error"
@@ -20,6 +22,9 @@ function SubmitAlert(props) {
         isOpen: isVisible, onClose
     } = useDisclosure({
         defaultIsOpen: true, onClose() {
+            props.setSubmitted(0);
+        },
+        onOpen() {
             props.setSubmitted(0);
         }
     });
