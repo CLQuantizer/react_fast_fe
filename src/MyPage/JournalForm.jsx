@@ -8,7 +8,7 @@ import {AutoResizeTextarea} from './AutoResizeTextArea';
 import SubmitAlert from './SubmitAlert';
 
 const journalUrl = Config.api + 'users/write/journals/';
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const submissionType = {Success: 'Success', Duplicate: 'Duplicate'};
 
 function JournalForm(props) {
@@ -26,7 +26,8 @@ function JournalForm(props) {
             }}
             onSubmit={(values, {setSubmitting}) => {
                 const d = new Date();
-                let date = d.getDate() + '/' + monthNames[d.getMonth()] + '/' + d.getFullYear().toString();
+                let day = d.getDate();
+                let date = (day<10?"0"+day.toString():day) + '/' + monthNames[d.getMonth()] + '/' + d.getFullYear().toString();
                 fetch(journalUrl, {
                     method: 'POST', headers: {
                         'accept': 'application/json',
