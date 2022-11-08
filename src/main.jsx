@@ -12,7 +12,7 @@ import { ColorModeSwitcher } from './ColorModeSwitcher.jsx';
 import Journals from './JournalsPage/Journals';
 import Config from './Config.jsx';
 
-const serverUrl = Config.server;
+const publicUrl= Config.publicUrl;
 
 const fetchExpiration = async () => {
   return localStorage.getItem('expiration');
@@ -74,20 +74,20 @@ function Main() {
         <Grid templateColumns='repeat(3, 1fr)' gap={6}>
           <GridItem w='100%' h='10'>
             <Button variant='outline'>
-              <Link href={serverUrl}>Home</Link>
+              <Link href={publicUrl}>Home</Link>
             </Button>
           </GridItem>
 
           <GridItem w='100%' h='10'>
             <Button variant='outline'>
-              <Link href={serverUrl + 'journals/'}>Journals</Link>
+              <Link href={publicUrl + 'journals/'}>Journals</Link>
             </Button>
           </GridItem>
 
           <GridItem w='100%' h='10'>
             <Button variant='outline'>
               {/* <Link href ={serverUrl+'login/'}>{isLoggedIn===true ? 'Login':'logout' }</Link> */}
-              <Link href={serverUrl + 'login/'}>{isLoggedIn ? 'Hi ' + user : 'login'}</Link>
+              <Link href={publicUrl + 'login/'}>{isLoggedIn ? 'Hi ' + user : 'login'}</Link>
             </Button>
           </GridItem>
 
