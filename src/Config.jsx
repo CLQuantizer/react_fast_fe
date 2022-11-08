@@ -11,12 +11,12 @@ class Config {
       this.publicUrl = "";
     } else if (this.mode === 'production') {
       this.server = 'https://localhost:3000/';
-      this.api = "https://139.162.225.136/api/journal/"
-      this.glove = "https://139.162.225.136/api/word/"
-      this.infra = "https://139.162.225.136/api/infra/"
-      this.dataPanel = "https://139.162.225.136/api/datapanel/"
+      this.api = "https://ezio.uk/api/journal/"
+      this.glove = "https://ezio.uk/api/word/"
+      this.infra = "https://ezio.uk/api/infra/"
+      this.dataPanel = "https://ezio.uk/api/datapanel/"
       this.frontEndKeyWord = 'pm2';
-      this.publicUrl = "https://139.162.225.136/";
+      this.publicUrl = "https://ezio.uk/";
     } else {
       throw new Error('mode must be either \'development\' or \'production\'');
     }
