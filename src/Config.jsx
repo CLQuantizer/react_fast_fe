@@ -3,10 +3,10 @@ class Config {
     this.mode = mode;
     if (this.mode === 'development') {
       this.server = 'http://localhost:3000/';
-      this.api = 'http://localhost:8000/';
-      this.glove = 'http://localhost:8001/';
-      this.infra = 'http://localhost:8002/';
-      this.dataPanel = 'http://localhost:8003/';
+      this.api = 'http://localhost:8000/api/journal/';
+      this.glove = 'http://localhost:8001/api/word/';
+      this.infra = 'http://localhost:8002/api/infra/';
+      this.dataPanel = 'http://localhost:8003/api/datapanel/';
       this.frontEndKeyWord = 'npm';
       this.publicUrl = "";
     } else if (this.mode === 'production') {
