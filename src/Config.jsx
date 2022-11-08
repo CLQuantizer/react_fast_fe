@@ -5,7 +5,7 @@ class Config {
       this.server = 'http://localhost:3000/';
       this.api = 'http://localhost:8000/api/journal/';
       this.glove = 'http://localhost:8001/api/word/';
-      this.infra = 'http://localhost:8002/api/infra/';
+      this.infra = 'http://localhost:8002/api/infra/:';
       this.dataPanel = 'http://localhost:8003/api/datapanel/';
       this.frontEndKeyWord = 'npm';
       this.publicUrl = "";
