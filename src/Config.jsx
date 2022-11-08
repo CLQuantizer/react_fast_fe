@@ -8,6 +8,7 @@ class Config {
       this.infra = 'http://localhost:8002/api/infra/:';
       this.dataPanel = 'http://localhost:8003/api/datapanel/';
       this.frontEndKeyWord = 'npm';
+      this.nginx ='';
       this.publicUrl = "";
     } else if (this.mode === 'production') {
       this.server = 'https://localhost:3000/';
@@ -16,6 +17,7 @@ class Config {
       this.infra = "https://ezio.uk/api/infra/"
       this.dataPanel = "https://ezio.uk/api/datapanel/"
       this.frontEndKeyWord = 'pm2';
+      this.nginx = "nginx";
       this.publicUrl = "https://ezio.uk/";
     } else {
       throw new Error('mode must be either \'development\' or \'production\'');
