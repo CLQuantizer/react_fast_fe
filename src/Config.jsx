@@ -16,7 +16,7 @@ class Config {
       this.infra = 'http://localhost:8002/';
       this.dataPanel = 'http://localhost:8003/';
       this.frontEndKeyWord = 'pm2';
-      this.publicUrl = "https://139.162.225.136";
+      this.publicUrl = "https://139.162.225.136/";
     } else {
       throw new Error('mode must be either \'development\' or \'production\'');
     }
